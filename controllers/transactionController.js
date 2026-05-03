@@ -28,6 +28,20 @@ const addTransaction = async (req, res) => {
             return res.status(400).json({ message: 'Amount must be greater than zero' });
         }
 
+        // Check balance for withdrawal
+        if (type === 'withdraw') {
+            const allTx = await Transaction.find({ userId: req.user.firebaseUid });
+            let balance = 0;
+            allTx.forEach(t => {
+                if (t.type === 'add') balance += t.amount;
+                else if (t.type === 'withdraw') balance -= t.amount;
+            });
+
+            if (amount > balance) {
+                return res.status(400).json({ message: 'Insufficient balance' });
+            }
+        }
+
         const transaction = await Transaction.create({
             userId: req.user.firebaseUid,
             type,
