@@ -6,7 +6,12 @@ This repository contains the backend API for the **Finance Tracker** application
 
 ## 🚀 Live API
 
-🔗 **Base URL:** [https://backend-sigma-flame-93.vercel.app/](https://backend-sigma-flame-93.vercel.app/)
+🔗 **Project Live Link:** [https://github.com/ekra024/finance-project-frontend](https://github.com/ekra024/finance-project-frontend)
+
+
+**Frontend Link:** [https://github.com/ekra024/finance-project-frontend](https://github.com/ekra024/finance-project-frontend)
+
+
 
 ---
 
