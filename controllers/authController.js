@@ -1,6 +1,6 @@
 const login = async (req, res) => {
     try {
-        // req.user is attached by the verifyToken middleware
+        
         if (!req.user) {
             return res.status(401).json({ message: 'Authentication failed' });
         }

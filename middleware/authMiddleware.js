@@ -10,10 +10,10 @@ const verifyToken = async (req, res, next) => {
 
         const token = authHeader.split(' ')[1];
         
-        // Verify token with Firebase Admin
+        
         const decodedToken = await admin.auth().verifyIdToken(token);
         
-        // Find or create user in MongoDB
+       
         let user = await User.findOne({ firebaseUid: decodedToken.uid });
         
         if (!user) {
@@ -24,7 +24,7 @@ const verifyToken = async (req, res, next) => {
             });
         }
 
-        // Attach user to request
+        
         req.user = user;
         next();
     } catch (error) {

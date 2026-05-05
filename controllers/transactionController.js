@@ -1,6 +1,5 @@
 const Transaction = require('../models/Transaction');
 
-// Get all transactions for a user
 const getTransactions = async (req, res) => {
     try {
         const transactions = await Transaction.find({ userId: req.user.firebaseUid }).sort({ createdAt: -1 });
@@ -11,7 +10,7 @@ const getTransactions = async (req, res) => {
     }
 };
 
-// Add a new transaction
+
 const addTransaction = async (req, res) => {
     try {
         const { type, amount } = req.body;
@@ -28,7 +27,7 @@ const addTransaction = async (req, res) => {
             return res.status(400).json({ message: 'Amount must be greater than zero' });
         }
 
-        // Check balance for withdrawal
+        
         if (type === 'withdraw') {
             const allTx = await Transaction.find({ userId: req.user.firebaseUid });
             let balance = 0;
@@ -55,7 +54,7 @@ const addTransaction = async (req, res) => {
     }
 };
 
-// Get balance summary
+
 const getBalance = async (req, res) => {
     try {
         const transactions = await Transaction.find({ userId: req.user.firebaseUid });
